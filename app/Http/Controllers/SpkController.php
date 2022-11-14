@@ -87,4 +87,14 @@ class SpkController extends Controller
         //dd($matriks[2]['facilities']);
         
     }
+
+    public function miles()
+    {
+        session_start();
+        $jarak = collect($_SESSION['jarak']);
+        //dd($jarak);
+        return view('spk.cobabaru', [
+            'jarak' => $jarak
+        ]);
+    }
 }

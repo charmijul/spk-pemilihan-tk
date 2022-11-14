@@ -9,8 +9,16 @@ class MapLocation extends Component
 {
     public $long, $lat;
     public $title = 'map';
+    public $jarak = array();
     public $test = 'value test';
     
+    public function tampilJarak($jarak){
+        $this->jarak = $jarak;
+        return view('tampilJarak', [
+            'jarak' => $this->jarak
+        ]);
+    }
+
     public function render()
     {
         $datatk = Datatk::all();
@@ -26,5 +34,12 @@ class MapLocation extends Component
             'title' => $this->title,
             'lokasi' => $lokasi
         ));
+    }
+
+    public function miles()
+    {
+        session_start();
+        $_SESSION['jarak'] = $this->jarak;
+        return redirect()->to('/getMiles');
     }
 }

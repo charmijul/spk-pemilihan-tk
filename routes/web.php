@@ -69,19 +69,4 @@ Route::get('/spk', [SpkController::class, 'index']);
 Route::post('/spk/roc', [SpkController::class, 'spk']);
 
 Route::get('/map', MapLocation::class);
-
-Route::get('/coba', [CobaController::class, 'index']);
-
-Route::post('/getMiles', [CobaController::class, 'miles']);
-
-Route::get('/cobalg', function () {
-    return view('cobalg', [
-        "title" => "cobalg"
-    ]);
-});
-
-Route::get('/cobatrus', function () {
-    return view('cobatrus', [
-        "title" => "cobalg"
-    ]);
-});
+Route::get('/getMiles', [SpkController::class, 'miles']);
