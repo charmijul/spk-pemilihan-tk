@@ -1,4 +1,4 @@
-{{-- @dd($nilaikriteria) --}}
+{{-- @dd($datatk) --}}
 @extends('layout.main')
 
 @section('container')
@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th>{{ 'Nama TK' }}</th>
+                    <th>{{ 'Jarak' }}</th>
                     <th>{{ 'Hasil perhitugan part 1' }}</th>
                     <th>{{ 'Hasil perhitugan part 2' }}</th>
                     <th>{{ 'Nilai Qi' }}</th>
@@ -22,6 +23,7 @@
                     <tr>
                         <td><a href="/datatk/{{ $tk['name'] }}" class="text-decoration-none"> {{ $tk['name'] }} </a>
                         </td>
+                        <td>{{ Str::limit($tk['jarak'], 6, '') }} Km</td>
                         <td>{{ $tk['hitungpt1'] }}</td>
                         <td>{{ $tk['hitungpt2'] }}</td>
                         <td>{{ $tk['total'] }}</td>

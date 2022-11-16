@@ -4,5 +4,5 @@
     <h1>Halaman Utama</h1>
 
     <a href="/kriteria"><button class="btn btn-success">Kriteria</button></a>
-    <a href="/spk"><button class="btn btn-success">SPK</button></a>
+    <a href="/map"><button class="btn btn-success">SPK</button></a>
 @endsection

@@ -30,12 +30,12 @@ class SpkController extends Controller
     public function spk(Request $request)
     {
         $kriteria = collect();
-        $matriks = Matrix::matrix_keputusan();
+        $matriks =Matrix::matrix_keputusan();
         $bobot_kriteria = BobotKriteria::bobot();
         $databaru = collect();
         $coba = collect();
 
-        for($i = 1; $i !=8; $i++){
+        for($i = 1; $i !=9; $i++){
             $urutan = 'kriteria_ke_';
             $urutan .= $i;
             $kriteria[] = [
@@ -59,17 +59,19 @@ class SpkController extends Controller
                     'nilai' => $hitungpt2,
                     'total' => $total2
                 ];
-                //dd($coba);
             }
+            //dd($kriteria);
             $nilai_Qi_pt1 = $total1 * 0.5;
             $nilai_Qi_pt2 = $total2 * 0.5;
             $total = $nilai_Qi_pt1 + $nilai_Qi_pt2;
+            $jarak = $_SESSION['jarak'];
             $databaru[] = [
                 'id' => $matrix['id'],
                 'name' => $matrix['name'],
                 'hitungpt1' => $nilai_Qi_pt1, 
                 'hitungpt2' => $nilai_Qi_pt2,
-                'total' => $total 
+                'total' => $total,
+                'jarak' => $jarak[$matrix['id'] - 1]
             ];
         }
         
@@ -90,11 +92,27 @@ class SpkController extends Controller
 
     public function miles()
     {
-        session_start();
-        $jarak = collect($_SESSION['jarak']);
+        // session_start();
+        // $jarak = $_SESSION['jarak'];
+        // $matrix_keputusan_ternormalisasi = collect();
+        $matriks = collect(Matrix::matrix_keputusan());
+        // for($i = 0; $i !=$matriks->count(); $i++){
+        //     $matrix_keputusan_ternormalisasi[] = [
+        //         'id' => $matriks[$i]['id'],
+        //         'name' => $matriks[$i]['name'],
+        //         'spp' => $matriks[$i]['spp'],
+        //         'entry_fee' => $matriks[$i]['entry_fee'],
+        //         'capacity' => $matriks[$i]['capacity'],
+        //         'teachers' => $matriks[$i]['teachers'],
+        //         'accreditation' => $matriks[$i]['accreditation'],
+        //         'abk' => $matriks[$i]['abk'],
+        //         'facilities' => $matriks[$i]['facilities'],
+        //         'jarak' => $jarak[$i]
+        //     ];
+        // }
         //dd($jarak);
         return view('spk.cobabaru', [
-            'jarak' => $jarak
+            'matrix' => $matriks
         ]);
     }
 }

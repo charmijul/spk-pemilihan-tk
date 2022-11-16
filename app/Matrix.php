@@ -9,6 +9,8 @@ class Matrix
 {
     public static function matrix_keputusan()
     {
+        session_start();
+        $jarak = $_SESSION['jarak'];
         $datatk = Datatk::all();
         //$kriteria = Kriteria::all();
 
@@ -66,6 +68,15 @@ class Matrix
                 $facilitiespoint  = 3;
             }
 
+            //nilai untuk jarak
+            if($jarak[$tk->id - 1] < 3){
+                $distancepoint = 1;
+            } elseif($jarak[$tk->id - 1] >= 4 && $jarak[$tk->id - 1] <= 7){
+                $distancepoint = 2;
+            } elseif($jarak[$tk->id - 1] > 7){
+                $distancepoint = 3;
+            }
+
             $matrix_keputusan[] = [
                 'id' => $tk->id,
                 'name' => $tk->name,
@@ -75,7 +86,8 @@ class Matrix
                 'teachers' => $teacherspoint,
                 'accreditation' => $accreditationpoint,
                 'abk' => $abkpoint,
-                'facilities' => $facilitiespoint
+                'facilities' => $facilitiespoint,
+                'jarak' => $distancepoint
             ];
         }
 
@@ -86,6 +98,7 @@ class Matrix
         $maxaccreditation = $matrix_keputusan->max('accreditation');
         $maxabk = $matrix_keputusan->max('abk');
         $maxfacilities = $matrix_keputusan->max('facilities');
+        $minjarak = $matrix_keputusan->min('jarak');
 
         //normalisasi matrix keputusan
         foreach ($matrix_keputusan as $mt) {
@@ -96,6 +109,7 @@ class Matrix
             $accreditationpoint = $mt['accreditation'] / $maxaccreditation;
             $abkpoint = $mt['abk'] / $maxabk;
             $facilitiespoint = $mt['facilities'] / $maxfacilities;
+            $jarakpoint = $minjarak / $mt['jarak'];
 
             $matrix_keputusan_ternormalisasi[] = [
                 'id' => $mt['id'],
@@ -106,7 +120,8 @@ class Matrix
                 'teachers' => $teacherspoint,
                 'accreditation' => $accreditationpoint,
                 'abk' => $abkpoint,
-                'facilities' => $facilitiespoint
+                'facilities' => $facilitiespoint,
+                'jarak' => $jarakpoint
             ];
         }
 

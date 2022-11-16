@@ -1,1 +1,1 @@
-@dd($jarak)
+@dd($matrix)

@@ -12,7 +12,7 @@
             <form method="post" action="/spk/roc">
                 @csrf
 
-                @for($i = 1; $i < 8; $i++)
+                @for($i = 1; $i < 9; $i++)
                 {{-- form urutan kriteria ke-1 --}}
                 <div class="mb-3">
                     <label for="kriteria_ke_{{ $i }}" class="form-label">Kriteria dengan Urutan Prioritas ke-{{ $i }}</label>
@@ -21,6 +21,7 @@
                         @foreach ($criterias as $criteria)
                             <option value="{{ $criteria->initial }}">{{ $criteria->name }}</option>
                         @endforeach
+                        <option value="jarak">Jarak</option>
                     </select>
                     @error('kriteria_ke_{{ $i }}')
                         <div class="invalid-feedback">
