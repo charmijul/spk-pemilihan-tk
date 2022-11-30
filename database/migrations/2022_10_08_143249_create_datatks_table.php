@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('longtitude');
-            $table->string('lattitude');
-            $table->string('link_address');
+            $table->string('longtitude')->nullable();
+            $table->string('lattitude')->nullable();
+            $table->string('link_address')->nullable();
             $table->integer('spp');
             $table->integer('entry_fee');
             $table->integer('capacity');
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('abk');
             $table->integer('facilities');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

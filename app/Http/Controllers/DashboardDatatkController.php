@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Datatk;
 use App\Models\Subkriteria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class DashboardDatatkController extends Controller
@@ -39,9 +40,14 @@ class DashboardDatatkController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->file('image')->store('tk-images');
+
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
+            'longtitude' => 'required',
+            'lattitude' => 'required',
+            'link_address' => 'nullable|url',
             'spp' => 'required|numeric|min:10000|max:500000',
             'entry_fee' => 'required|numeric|min:100000|max:5000000',
             'capacity' => 'required|numeric|min:10|max:50',
@@ -49,9 +55,13 @@ class DashboardDatatkController extends Controller
             'accreditation' => 'required',
             'status' => 'required',
             'abk' => 'required',
-            'facilities' => 'required|numeric|min:4|max:10'
+            'facilities' => 'required|numeric|min:4|max:10',
+            'image' => 'image|file|max:2048'
         ]);
-
+        //dd($validatedData);
+        if ($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('tk-images');
+        }
         Datatk::create($validatedData);
 
         return redirect('/dashboard/datatk')->with('success', 'Data TK berhasil ditambahkan');
@@ -96,6 +106,9 @@ class DashboardDatatkController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
+            'longtitude' => 'required',
+            'lattitude' => 'required',
+            'link_address' => 'nullable|url',
             'spp' => 'required|numeric|min:10000|max:500000',
             'entry_fee' => 'required|numeric|min:100000|max:5000000',
             'capacity' => 'required|numeric|min:10|max:50',
@@ -103,8 +116,16 @@ class DashboardDatatkController extends Controller
             'accreditation' => 'required',
             'status' => 'required',
             'abk' => 'required',
-            'facilities' => 'required|numeric|min:4|max:10'
+            'facilities' => 'required|numeric|min:4|max:10',
+            'image' => 'image|file|max:2048'
         ]);
+
+        if ($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('tk-images');
+        }
 
         Datatk::where('id', $datatk->id)->update($validatedData);
 
@@ -119,6 +140,9 @@ class DashboardDatatkController extends Controller
      */
     public function destroy(Datatk $datatk)
     {
+        if($datatk->image){
+            Storage::delete($datatk->image);
+        }
         Datatk::destroy($datatk->id);
 
         return redirect('/dashboard/datatk')->with('success', 'Data TK berhasil dihapus');

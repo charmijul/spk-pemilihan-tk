@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Datatk;
 use App\Models\Kriteria;
 use App\Models\Subkriteria;
@@ -24,7 +25,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+        User::create([
+                'username' => 'charmijul',
+                'email' => 'charmijul@gmail.com',
+                'password' => bcrypt('qwerty123')
+        ]);
+        
         //isi tabel kriteria
         $isi_kriteria = [
             [

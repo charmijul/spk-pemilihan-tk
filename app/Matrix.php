@@ -69,9 +69,9 @@ class Matrix
             }
 
             //nilai untuk jarak
-            if($jarak[$tk->id - 1] < 3){
+            if($jarak[$tk->id - 1] <= 3){
                 $distancepoint = 1;
-            } elseif($jarak[$tk->id - 1] >= 4 && $jarak[$tk->id - 1] <= 7){
+            } elseif($jarak[$tk->id - 1] > 3 && $jarak[$tk->id - 1] <= 7){
                 $distancepoint = 2;
             } elseif($jarak[$tk->id - 1] > 7){
                 $distancepoint = 3;

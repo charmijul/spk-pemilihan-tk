@@ -71,11 +71,13 @@ class SpkController extends Controller
                 'hitungpt1' => $nilai_Qi_pt1, 
                 'hitungpt2' => $nilai_Qi_pt2,
                 'total' => $total,
-                'jarak' => $jarak[$matrix['id'] - 1]
+                'jarak' => $matrix['jarak']
+                // 'jarak' => $jarak[$matrix['id'] - 1]
             ];
         }
         
         $urutanalternatif = collect($databaru->sortByDesc('total'));
+        // $urutanalternatif = collect($databaru);
         //dd($databaru);
         
         return view('spk.hasil', [

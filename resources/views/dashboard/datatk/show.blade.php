@@ -2,9 +2,13 @@
 
 @section('container')
     <h2>Nama TK : {{ $infotk['name'] }}</h2>
-    <img src="http://source.unsplash.com/250x250?playground" width="250" height="250">
+    @if ($infotk->image)
+    <img src="{{ asset('storage/' . $infotk->image) }}">
+    @else    
+        <img src="{{ asset('storage/tk-images/default-image.png') }}" width="250" height="250">
+    @endif
     <article class="mt-10">
-        <h5 class="mt-10 mb-10">Kelurahan : {{ $infotk->address }}</h5>
+        <h5 class="mt-10 mb-10">Kelurahan : <a href="{{ $infotk->link_address }}">{{ $infotk->address }}</a></h5>
         <h5>Biaya SPP : {{ $infotk->spp }}</h5>
         <h5>Biaya Masuk (Rp) : {{ $infotk->entry_fee }}</h5>
         <h5>Batas Tampung perkelas (Rp) : {{ $infotk->capacity }}</h5>

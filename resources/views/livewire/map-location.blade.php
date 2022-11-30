@@ -26,13 +26,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Longtitude</label>
-                                        <input wire:model="long" type="text" class="form-control">
+                                        <input wire:model="long" type="text" class="form-control" disabled readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Lattitude</label>
-                                        <input wire:model="lat" type="text" class="form-control" id="lat-span">
+                                        <input wire:model="lat" type="text" class="form-control" id="lat-span" disabled readonly>
                                     </div>
                                 </div>
                                 {{-- <div class="col-sm-6">
@@ -43,7 +43,7 @@
                                 </div> --}}
                             </div>
                         </form>
-                            <button class="btn btn-dark text-white btn-block" wire:click="miles">Submit
+                            <button class="btn btn-dark text-white btn-block mt-3" wire:click="miles">Submit
                                 Location</button>
                     </div>
                 </div>
