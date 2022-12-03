@@ -3,27 +3,29 @@
 @section('container')
 
             <form action="/datatk" class="col-md-12">
-                <div class="input-group mb-3">
-                    <select class="form-select md-3" name="category">
-                        <option selected value="{{ request('category') }}">Cari Berdasarkan :</option>
-                        <option value="name">Nama TK</option>
-                        <option value="address">Kelurahan</option>
-                    </select>
-                    <input type="text" class="form-control md-6" placeholder="Search..." name="search"
-                        value="{{ request('search') }}">
-                    <button class="btn btn-danger" type="submit">Search</button>
+                <div class="row">
+                    <label for="category">Cari Berdasarkan:</label>
+                    <div class="input-group mb-3">
+                        <select class="form-select md-3" name="category">
+                            @if (request('category')=='name')
+                            <option value="name">Nama TK</option>
+                            <option value="address">Kelurahan</option>
+                            @elseif (request('category')=='address')
+                            <option value="address">Kelurahan</option>
+                            <option value="name">Nama TK</option>
+                            @else
+                            <option value="name">Nama TK</option>
+                            <option value="address">Kelurahan</option>
+                            @endif
+                        </select>
+                        <input type="text" class="form-control md-6" placeholder="Search..." name="search"
+                            value="{{ request('search') }}">
+                        <button class="btn btn-danger" type="submit">Search</button>
+                    </div>
                 </div>
             </form>
 
     @if ($datatk->count())
-        <style>
-            table,
-            th,
-            td {
-                border: 2px solid black;
-
-            }
-        </style>
         <table style="width:100%" cellpadding="4" class="text-center">
             <thead>
                 <tr>

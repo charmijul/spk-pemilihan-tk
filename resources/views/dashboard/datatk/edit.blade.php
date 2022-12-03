@@ -210,10 +210,10 @@
             map.setStyle(`mapbox://styles/mapbox/${style}`)
             map.addControl(new mapboxgl.NavigationControl())
 
-            var purpleMarker = new mapboxgl.Marker({
-                color: 'purple'
+            var redMarker = new mapboxgl.Marker({
+                color: 'red'
             });
-            purpleMarker.setLngLat(oldLocation) // marker position using variable 'from'
+            redMarker.setLngLat(oldLocation) // marker position using variable 'from'
                     .addTo(map);
             map.on('click', (e) => {
 
@@ -222,8 +222,8 @@
                 const longtitude = e.lngLat.lng;
                 const lattitude = e.lngLat.lat;
                 var from = [longtitude, lattitude]
-                purpleMarker.remove();
-                purpleMarker.setLngLat(from) // marker position using variable 'from'
+                redMarker.remove();
+                redMarker.setLngLat(from) // marker position using variable 'from'
                     .addTo(map); //add marker to map
                 long.value = longtitude;
                 lat.value = lattitude;

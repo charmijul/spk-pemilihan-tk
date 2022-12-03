@@ -1,5 +1,5 @@
 <div>
-    <h1>INI ADALAH HALAMAN MAP</h1>
+    <h1>Titik Koordinat Lokasi Anda:</h1>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- mapbox api --}}
     <div class="container-fluid">
@@ -74,8 +74,8 @@
             var lokasi = @json($lokasi);
             lokasi.forEach(element => {
                 var locate = element[1];
-                var greenMarker = new mapboxgl.Marker({
-                        color: 'green'
+                var redMarker = new mapboxgl.Marker({
+                        color: 'red'
                     })
                     .setLngLat(locate) // marker position using variable 'to'
                     .addTo(map); //add marker to map
@@ -84,8 +84,8 @@
             var options = {
                 units: 'kilometers'
             }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
-            var purpleMarker = new mapboxgl.Marker({
-                color: 'purple'
+            var greenMarker = new mapboxgl.Marker({
+                color: 'green'
             });
             map.on('click', (e) => {
                 const longtitude = e.lngLat.lng
@@ -95,10 +95,10 @@
                 if (jarak != []) {
                     var jarak = [];
                 }
-                purpleMarker.remove();
+                greenMarker.remove();
                 var from = [longtitude, lattitude]
 
-                purpleMarker.setLngLat(from) // marker position using variable 'from'
+                greenMarker.setLngLat(from) // marker position using variable 'from'
                     .addTo(map); //add marker to map
 
                 var lokasi = @json($lokasi);

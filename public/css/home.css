@@ -1,0 +1,25 @@
+.card{
+    align-items: center;
+    background-image:linear-gradient(to bottom right, #F94F4F, #F3EFEF);
+}
+.card-title{
+    color:#CE3A0E;
+    font-size: 50px;
+    font-weight: bold
+}
+.btn-start{
+    text-align: center;
+    border-radius: 4px;
+    color:#FFFFFF;
+    background-color: #F94F4F;
+    border: none;
+    outline: none;
+}
+.btn-guide{
+    text-align: center;
+    border-radius: 4px;
+    color: #F94F4F;
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+}

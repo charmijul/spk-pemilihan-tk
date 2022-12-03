@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container">
-        <a class="navbar-brand" href="/">SPK Pemilihan TK</a>
+        <a class="navbar-brand" href="/"><img src="/img/logo spk 2 cropped.png" width="50px" height="50px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,13 +11,12 @@
                     <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
+                    <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="/panduan">Panduan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('datatk') ? 'active' : '' }}" href="/datatk">Data TK</a>
                 </li>
             </ul>
-
 
             <ul class="navbar-nav ms-auto">
                 @auth
@@ -42,7 +41,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link {{ $title === 'Login' ? 'active' : '' }}" href="/login"><i
-                                class="bi bi-box-arrow-in-right"></i> Login</a>
+                                class="bi bi-box-arrow-in-right"></i> Login Admin</a>
                     </li>
                 @endauth
             </ul>

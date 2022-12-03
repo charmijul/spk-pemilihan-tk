@@ -29,6 +29,17 @@ class SpkController extends Controller
 
     public function spk(Request $request)
     {
+        // dd($request);
+        $validatedRequest = $request->validate([
+            "kriteria_ke_1" => "required",
+            "kriteria_ke_2" => "required",
+            "kriteria_ke_3" => "required",
+            "kriteria_ke_4" => "required",
+            "kriteria_ke_5" => "required",
+            "kriteria_ke_6" => "required",
+            "kriteria_ke_7" => "required",
+            "kriteria_ke_8" => "required"
+        ]);
         $kriteria = collect();
         $matriks =Matrix::matrix_keputusan();
         $bobot_kriteria = BobotKriteria::bobot();

@@ -34,9 +34,9 @@ Route::get('/home', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
+Route::get('/panduan', function () {
+    return view('panduan', [
+        "title" => "Guide",
         "name" => "hatsune miku",
         "email" => "mikucwan@gmail.com",
         "image" => "gifmiku.gif"

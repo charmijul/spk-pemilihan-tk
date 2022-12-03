@@ -40,6 +40,7 @@ class MapLocation extends Component
     {
         session_start();
         $_SESSION['jarak'] = $this->jarak;
+        //dd($this->jarak);
         return redirect()->to('/spk');
     }
 }

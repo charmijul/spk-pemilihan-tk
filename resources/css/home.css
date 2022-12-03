@@ -1,0 +1,12 @@
+.card{
+    align-items: center;
+    background-image:linear-gradient(to bottom right, #F94F4F, #F3EFEF);
+}
+.card-title{
+    color:#CE3A0E;
+    font-size: 50px;
+    font-weight: bold
+}
+.btn{
+    color:#CE3A0E;
+}
