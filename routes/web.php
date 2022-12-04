@@ -34,12 +34,20 @@ Route::get('/home', function () {
     ]);
 });
 
+Route::get('/roc', function () {
+    return view('roc', [
+        "title" => "ROC"
+    ]);
+});
+Route::get('/waspas', function () {
+    return view('waspas', [
+        "title" => "WASPAS"
+    ]);
+});
+
 Route::get('/panduan', function () {
     return view('panduan', [
-        "title" => "Guide",
-        "name" => "hatsune miku",
-        "email" => "mikucwan@gmail.com",
-        "image" => "gifmiku.gif"
+        "title" => "Guide"
     ]);
 });
 
@@ -53,7 +61,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->middleware('auth');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard',function(){

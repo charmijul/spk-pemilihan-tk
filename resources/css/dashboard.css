@@ -98,3 +98,11 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+.btn-register{
+  text-align: center;
+  border-radius: 4px;
+  color:#FFFFFF;
+  background-color: #3a3737;
+  border: none;
+  outline: none;
+}
