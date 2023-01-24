@@ -1,14 +1,13 @@
-{{-- @dd($datatk) --}}
+{{-- @dd($_SESSION['rekomendasitk']) --}}
 @extends('layout.main')
 
 @section('container')
     <header>
         <h1>Urutan Rekomendasi TK</h1>
     </header>
-
+    {{-- <a href="http://127.0.0.1:8000/spk/cetak-pdf"><button class="bg-success text-white fs-4 mb-3">Cetak</button></a> --}}
     <body style="align-items: center">
-
-        <table style="width:75%" cellpadding="4" class="text-center">
+        <table style="width:75%" cellpadding="4" class="text-center mt-3 mb-5">
             <thead>
                 <tr>
                     <th>{{ 'No' }}</th>

@@ -11,12 +11,12 @@
             berada pada wilayah
             tersebut yang akan menjadi alternatif pilihan para orang tua.</p>
         <br>
-        <p fs-4>&emsp;Adapun kriteria yang menjadi patokan pada sistem ini akan di boboti berdasarkan urutan prioritas
+        <p fs-4>&emsp;Adapun <a href="/kriteria">kriteria</a> yang menjadi patokan pada sistem ini akan di boboti berdasarkan urutan prioritas
             pengguna
-            dengan nilai bobot setiap kriteria didapat dari hasil perhitungan menggunakan metode <a href="/roc">Rank Order
+            dengan nilai bobot setiap kriteria didapat dari hasil perhitungan menggunakan metode <a href="https://www.google.com/search?q=metode+roc&rlz=1C1CHBD_enID1036ID1036&oq=metode+ROC">Rank Order
                 Centroid (ROC)</a>
             dan alternatif pilihan akan diurutkan berdasarkan nilai yang didapat dari perhitungan menggunakan metode Metode
-            <a href="/waspas">Weighted Aggregated Sum Product Assesment (WASPAS)</a>.
+            <a href="https://www.google.com/search?q=metode+waspas&rlz=1C1CHBD_enID1036ID1036&oq=metode+WASPAS">Weighted Aggregated Sum Product Assesment (WASPAS)</a>.
         </p>
         <br>
         <p fs-4>

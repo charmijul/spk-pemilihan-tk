@@ -1,4 +1,5 @@
 {{-- @dd($nilaikriteria) --}}
+{{-- @dd($_SESSION['jarak']) --}}
 @extends('layout.main')
 
 @section('container')
@@ -8,8 +9,8 @@
 
     <body>
 
-        <div class="col-lg-5">
-            <form method="post" action="/spk/roc">
+        <div class="col-lg-5 mb-5">
+            <form method="post" action="/spk/hasil">
                 @csrf
 
                 @for ($i = 1; $i < 9; $i++)
@@ -33,117 +34,12 @@
                         @enderror
                     </div>
                 @endfor
-                {{-- form urutan kriteria ke-1 --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_ke-1" class="form-label">Kriteria dengan Urutan Prioritas ke-1</label>
-                    <select class="form-select" name="kriteria_ke-1" id="kriteria_ke-1" required
-                        value="{{ old('kriteria_ke-1') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_ke-1')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria kedua --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_kedua" class="form-label">Kriteria dengan Urutan Prioritas kedua</label>
-                    <select class="form-select" name="kriteria_kedua" id="kriteria_kedua" required
-                        value="{{ old('kriteria_kedua') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_kedua')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria ketiga --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_ketiga" class="form-label">Kriteria dengan Urutan Prioritas ketiga</label>
-                    <select class="form-select" name="kriteria_ketiga" id="kriteria_ketiga" required
-                        value="{{ old('kriteria_ketiga') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_ketiga')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria keempat --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_keempat" class="form-label">Kriteria dengan Urutan Prioritas keempat</label>
-                    <select class="form-select" name="kriteria_keempat" id="kriteria_keempat" required
-                        value="{{ old('kriteria_keempat') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_keempat')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria kelima --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_kelima" class="form-label">Kriteria dengan Urutan Prioritas kelima</label>
-                    <select class="form-select" name="kriteria_kelima" id="kriteria_kelima" required
-                        value="{{ old('kriteria_kelima') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_kelima')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria keenam --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_keenam" class="form-label">Kriteria dengan Urutan Prioritas keenam</label>
-                    <select class="form-select" name="kriteria_keenam" id="kriteria_keenam" required
-                        value="{{ old('kriteria_keenam') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial  }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_keenam')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
-                {{-- form urutan kriteria ketujuh --}}
-                {{-- <div class="mb-3">
-                    <label for="kriteria_ketujuh" class="form-label">Kriteria dengan Urutan Prioritas ketujuh</label>
-                    <select class="form-select" name="kriteria_ketujuh" id="kriteria_ketujuh" required
-                        value="{{ old('kriteria_ketujuh') }}">
-                        @foreach ($criterias as $criteria)
-                        <option value="{{ $criteria->initial }}">{{ $criteria->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('kriteria_ketujuh')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
 
                 <button type="submit" class="btn btn-primary mb-3">Submit</button>
             </form>
         </div>
 
-        <table style="width:100%" cellpadding="4" class="text-center">
+        <table style="width:100%" cellpadding="4" class="text-center mt-5 mb-5">
             <thead>
                 <tr>
                     <th>{{ 'Nama TK' }}</th>
@@ -169,7 +65,7 @@
                         <td>{{ $tk['accreditation'] }}</td>
                         <td>{{ $tk['abk'] }}</td>
                         <td>{{ $tk['facilities'] }}</td>
-                        <td>{{ 'nilai qi' }}</td>
+                        <td>{{ '' }}</td>
                     </tr>
                 @endforeach
             </tbody>

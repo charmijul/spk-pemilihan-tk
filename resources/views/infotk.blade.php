@@ -1,6 +1,16 @@
 @extends('layout.main')
 
 @section('container')
+<style>
+    .btn{
+    text-align: center;
+    border-radius: 4px;
+    /* color: #F94F4F; */
+    background-color: green;
+    border: none;
+    outline: none;
+    }
+</style>
     <h2>Nama TK : {{ $datatk['name'] }}</h2>
     @if ($datatk->image)
         <img src="{{ asset('storage/' . $datatk->image) }}">
@@ -18,5 +28,6 @@
         <h5>Menerima ABK : {{ $datatk->abk }}</h5>
         <h5>Jumlah Fasilitas : {{ $datatk->facilities }}</h5>
     </article>
-    <a href="/datatk">Bact to Data TK</a>
+    {{-- <a href="/datatk">Back to Data TK</a> --}}
+    <button class="btn btn-success" onclick="history.go(-1);"> Kembali </button>
 @endsection

@@ -1,25 +1,29 @@
 .card{
     align-items: center;
-    background-image:linear-gradient(to bottom right, #F94F4F, #F3EFEF);
+    background-image:linear-gradient(to bottom right, #0AA804, #F3FF1E);
 }
 .card-title{
-    color:#CE3A0E;
+    color:goldenrod;
     font-size: 50px;
-    font-weight: bold
+    font-weight: bold;
+    -webkit-text-stroke: 1px green;
 }
 .btn-start{
     text-align: center;
     border-radius: 4px;
     color:#FFFFFF;
-    background-color: #F94F4F;
+    background-color: green;
     border: none;
     outline: none;
 }
 .btn-guide{
     text-align: center;
     border-radius: 4px;
-    color: #F94F4F;
+    color: green;
     background-color: #FFFFFF;
     border: none;
     outline: none;
+}
+p {
+    color: green;
 }

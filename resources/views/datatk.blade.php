@@ -20,13 +20,13 @@
                         </select>
                         <input type="text" class="form-control md-6" placeholder="Search..." name="search"
                             value="{{ request('search') }}">
-                        <button class="btn btn-danger" type="submit">Search</button>
+                        <button class="btn btn-success" type="submit">Search</button>
                     </div>
                 </div>
             </form>
 
     @if ($datatk->count())
-        <table style="width:100%" cellpadding="4" class="text-center">
+        <table style="width:100%" cellpadding="4" class="text-center mb-5">
             <thead>
                 <tr>
                     <th>{{ 'Nama TK' }}</th>

@@ -6,9 +6,13 @@ use App\Matrix;
 use App\BobotKriteria;
 use App\Models\Datatk;
 use App\Models\Kriteria;
+use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF;
+// use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
 use Illuminate\Support\Facades\App;
+// use Illuminate\Support\Facades\PDF;
 
 class SpkController extends Controller
 {
@@ -29,6 +33,15 @@ class SpkController extends Controller
 
     public function spk(Request $request)
     {
+        // if($_SESSION['rekomendasitk']){
+        //     $urutanalternatif = $_SESSION['rekomendasitk'];
+
+        // return view('spk.hasil', [
+        //     'title' => 'HASIL SPK',
+        //     'datatk' => $urutanalternatif
+        // ]);
+        // }
+        // else{
         // dd($request);
         $validatedRequest = $request->validate([
             "kriteria_ke_1" => "required",
@@ -88,9 +101,12 @@ class SpkController extends Controller
         }
         
         $urutanalternatif = collect($databaru->sortByDesc('total'));
+        
         // $urutanalternatif = collect($databaru);
         //dd($databaru);
         
+        // $_SESSION['rekomendasitk'] = $urutanalternatif;
+
         return view('spk.hasil', [
             'title' => 'HASIL SPK',
             'datatk' => $urutanalternatif
@@ -100,32 +116,17 @@ class SpkController extends Controller
 
         //untuk memanggil nilai matirks 1 column
         //dd($matriks[2]['facilities']);
+    // }
         
     }
 
-    public function miles()
-    {
-        // session_start();
-        // $jarak = $_SESSION['jarak'];
-        // $matrix_keputusan_ternormalisasi = collect();
-        $matriks = collect(Matrix::matrix_keputusan());
-        // for($i = 0; $i !=$matriks->count(); $i++){
-        //     $matrix_keputusan_ternormalisasi[] = [
-        //         'id' => $matriks[$i]['id'],
-        //         'name' => $matriks[$i]['name'],
-        //         'spp' => $matriks[$i]['spp'],
-        //         'entry_fee' => $matriks[$i]['entry_fee'],
-        //         'capacity' => $matriks[$i]['capacity'],
-        //         'teachers' => $matriks[$i]['teachers'],
-        //         'accreditation' => $matriks[$i]['accreditation'],
-        //         'abk' => $matriks[$i]['abk'],
-        //         'facilities' => $matriks[$i]['facilities'],
-        //         'jarak' => $jarak[$i]
-        //     ];
-        // }
-        //dd($jarak);
-        return view('spk.cobabaru', [
-            'matrix' => $matriks
+    public function downloadpdf(){
+        session_start();
+        $rekomendasitk = $_SESSION['rekomendasitk'];
+        $pdf = PDF::loadview('spk.PrintRecomendation', [
+            'title' => 'HASIL SPK',
+            'datatk' => $rekomendasitk
         ]);
+        return $pdf->download('rekomendasi TK.pdf');
     }
 }

@@ -68,16 +68,37 @@ body {
 /*
  * Navbar
  */
+ .text-berjalan{
+  font-weight: bold;
+  color: green;
+ }
+
+navbar {
+  background-image:linear-gradient(to bottom right, #0AA804, #F3FF1E);
+}
+
+.navbar{
+  background-image:linear-gradient(to bottom right, #0AA804, #F3FF1E);
+}
 
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  margin-left: 50px;
+  font-size: 20px;
+  color: green;
+  justify-items: center;
+  font-weight: bold;
 }
-
-.navbar .navbar-toggler {
+button{
+  background-color: transparent;
+  font-weight: bold;
+  /* -webkit-text-stroke: 1px green; */
+}
+.bi{
+  color: green;
+}
+/* .navbar .navbar-toggler {
   top: .25rem;
   right: 1rem;
 }
@@ -97,4 +118,4 @@ body {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
+} */

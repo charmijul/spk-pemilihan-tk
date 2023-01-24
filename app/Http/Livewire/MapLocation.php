@@ -38,9 +38,12 @@ class MapLocation extends Component
 
     public function miles()
     {
-        session_start();
-        $_SESSION['jarak'] = $this->jarak;
-        //dd($this->jarak);
-        return redirect()->to('/spk');
+        if($this->long != "" || $this->lat != null){
+            session_start();
+            //session_reset();
+            $_SESSION['jarak'] = $this->jarak;
+            //dd($this->jarak);
+            return redirect()->to('/spk');
+        }
     }
 }

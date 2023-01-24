@@ -74,7 +74,8 @@ Route::resource('/dashboard/datatk', DashboardDatatkController::class)
 ->middleware('auth');
 
 Route::get('/spk', [SpkController::class, 'index']);
-Route::post('/spk/roc', [SpkController::class, 'spk']);
+Route::get('/spk/cetak-pdf', [SpkController::class, 'downloadpdf']);
+Route::post('/spk/hasil', [SpkController::class, 'spk']);
 
 Route::get('/map', MapLocation::class);
 Route::get('/getMiles', [SpkController::class, 'miles']);

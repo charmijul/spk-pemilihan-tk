@@ -1,11 +1,14 @@
-<style>
+{{-- <style>
     nav{
         background-image:linear-gradient(to top right, #d40c0c, #de4646);
     }
-</style>
+    href{
+    color: black;
+  }
+</style> --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="img/logo spk 2 cropped.png" width="50px" height="50px"></a>
+        <a class="navbar-brand" href="/"><img src="img/logo-spk-cropped.png" width="50px" height="50px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

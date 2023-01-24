@@ -1,12 +1,17 @@
 <div>
     <h1>Titik Koordinat Lokasi Anda:</h1>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        .card-header{
+            background-image: linear-gradient(to top right, #0AA804, #b3db22);
+        }
+    </style>
     {{-- mapbox api --}}
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">
+                    <div class="card-header text-white">
                         MapBox
                     </div>
                     <div class="card-body">
@@ -16,7 +21,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header bg-dark text-white">
+                    <div class="card-header text-white">
                         Titik Kordinat
                     </div>
                     <div class="card-body">
@@ -26,13 +31,15 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Longtitude</label>
-                                        <input wire:model="long" type="text" class="form-control" disabled readonly>
+                                        <input wire:model="long" type="text" class="form-control" disabled readonly
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Lattitude</label>
-                                        <input wire:model="lat" type="text" class="form-control" id="lat-span" disabled readonly>
+                                        <input wire:model="lat" type="text" class="form-control" id="lat-span"
+                                            disabled readonly required>
                                     </div>
                                 </div>
                                 {{-- <div class="col-sm-6">
@@ -43,8 +50,8 @@
                                 </div> --}}
                             </div>
                         </form>
-                            <button class="btn btn-dark text-white btn-block mt-3" wire:click="miles">Submit
-                                Location</button>
+                        <button class="btn btn-success text-white btn-block mt-3" wire:click="miles">Submit
+                            Location</button>
                     </div>
                 </div>
             </div>
@@ -71,14 +78,23 @@
             map.setStyle(`mapbox://styles/mapbox/${style}`)
             map.addControl(new mapboxgl.NavigationControl())
 
+
+
             var lokasi = @json($lokasi);
             lokasi.forEach(element => {
                 var locate = element[1];
+                var localename = element[0];
+
+                var popup = new mapboxgl.Popup()
+                    .setText(localename)
+                    .addTo(map);
+
                 var redMarker = new mapboxgl.Marker({
                         color: 'red'
                     })
                     .setLngLat(locate) // marker position using variable 'to'
-                    .addTo(map); //add marker to map
+                    .addTo(map)
+                    .setPopup(popup); //add marker to map
             });
 
             var options = {
@@ -90,28 +106,39 @@
             map.on('click', (e) => {
                 const longtitude = e.lngLat.lng
                 const lattitude = e.lngLat.lat
-                @this.long = longtitude;
-                @this.lat = lattitude;
                 if (jarak != []) {
                     var jarak = [];
                 }
+
                 greenMarker.remove();
                 var from = [longtitude, lattitude]
 
-                greenMarker.setLngLat(from) // marker position using variable 'from'
-                    .addTo(map); //add marker to map
+                var cobajarak = turf.distance(defaultLocation, from, options);
+                console.log("jarak dari pusat peta", cobajarak);
+                if (cobajarak > 10) {
+                    alert(
+                        "mohon maaf untuk saat ini sistem tidak mendukung untuk wilayah anda, untuk saat ini sistem hanya mendukung untuk wilayah Kec.Loa Janan"
+                    );
+                    @this.long = null;
+                    @this.lat = null;
+                } else {
+                    @this.long = longtitude;
+                    @this.lat = lattitude;
+                    greenMarker.setLngLat(from) // marker position using variable 'from'
+                        .addTo(map); //add marker to map
 
-                var lokasi = @json($lokasi);
-                lokasi.forEach(element => {
-                    var locate = element[1];
-                    var distance = turf.distance(locate, from, options);
-                    jarak.push(distance);
-                });
+                    var lokasi = @json($lokasi);
+                    lokasi.forEach(element => {
+                        var locate = element[1];
+                        var distance = turf.distance(locate, from, options);
+                        jarak.push(distance);
+                    });
 
-                @this.jarak = jarak;
-                console.log(from);
+                    @this.jarak = jarak;
+                    console.log(from);
+                }
             });
-            
+
         });
         //onclick cara ke-1
         // document.getElementById("tampiljarak").onclick = function() {
@@ -122,7 +149,6 @@
         //         window.location.href="baru";
         //         console.log('ini adalah value baru jarak : ', sessionStorage.getItem('jarak'));
         // };
-
     </script>
 @endpush
 

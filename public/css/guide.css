@@ -1,6 +1,6 @@
 article{
     align-items: center;
-    background-image:linear-gradient(to bottom right, #F94F4F, #F3EFEF);
+    background-image:linear-gradient(to bottom right, #83FF1E, #F3FF1E);
     font-size: 25px;
     text-align: justify;
     border-radius: 5px;
@@ -14,7 +14,7 @@ p{
     text-align: center;
     border-radius: 4px;
     color:#FFFFFF;
-    background-color: #F94F4F;
+    background-color: green;
     border: none;
     outline: none;
 }

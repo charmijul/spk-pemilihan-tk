@@ -18,5 +18,5 @@ p{
         <h1 class="h2">Welcome back, {{ auth()->user()->username }} </h1>
     </div>
     <p>selamat datang pada menu dashboard, pada menu ini anda dapat menambah admin baru dan dapat mengelolah data TK</p>
-    <a href="/register"><button class="btn-register fs-4">Tambah Admin Baru</button></a>
+    <a href="/register"><button class="btn-register bg-success fs-4">Tambah Admin Baru</button></a>
     @endsection

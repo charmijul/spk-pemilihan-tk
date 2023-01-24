@@ -18,9 +18,23 @@
     border-radius: 0;
     margin-bottom: -1px;
   }
+  
+  a{
+    color: green;
+  }
 
   nav {
-    background-image: linear-gradient(to top right, #d40c0c, #de4646);
+    background-image: linear-gradient(to top right, #0AA804, #F3FF1E);
+    /* background-image: linear-gradient(to top right, #83FF1E, #F3FF1E); */
+  }
+  
+  .navbar-dark .navbar-nav .nav-link {
+    color: green;
+    font-size: 25px;
+  }
+  .navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: green;
   }
 
   table,
