@@ -1,4 +1,8 @@
-  .form-signin .form-floating:focus-within {
+.row{
+  justify-content: center;
+}
+
+.form-signin .form-floating:focus-within {
     z-index: 2;
   }
 
